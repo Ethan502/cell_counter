@@ -1,0 +1,1 @@
+trying to count the amount of cells in the picture
