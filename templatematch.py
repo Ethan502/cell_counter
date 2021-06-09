@@ -12,11 +12,12 @@ def matcher(img_data, template):
 
     w,h = template.shape[::-1]
 
-    # gray = np.float32(gray)
-    # template = np.float32(template)
+    k = (20,20)
+    blurred_gray = cv.blur(gray,k)
+    blurred_temp = cv.blur(template,k)
 
-    res = cv.matchTemplate(gray, template, cv.TM_CCOEFF_NORMED)
-    threshold = 0.75
+    res = cv.matchTemplate(blurred_gray, blurred_temp, cv.TM_CCOEFF_NORMED)
+    threshold = 0.8
     loc = np.where(res >= threshold)
 
     for pt in zip(*loc[::-1]):

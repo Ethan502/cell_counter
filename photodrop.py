@@ -4,7 +4,7 @@ import numpy as np
 from counters import circlecounter, cornercounter
 from templatematch import matcher
 
-img = cv.imread('static/images/cellz.jpg')
+img = cv.imread('static/images/morecellz.jpg')
 template = cv.imread('static/images/onecell.jpg',0)
 
 #print("og template type")
