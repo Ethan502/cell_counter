@@ -41,4 +41,3 @@ def cornercounter(img_data):
     cv.imshow('window', output)
     cv.waitKey(0)
     cv.destroyAllWindows()
-    
