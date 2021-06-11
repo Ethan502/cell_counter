@@ -17,9 +17,12 @@ def matcher(img_data, template):
     blurred_temp = cv.blur(template,k)
 
     res = cv.matchTemplate(blurred_gray, blurred_temp, cv.TM_CCOEFF_NORMED)
-    threshold = 0.8
+    threshold = 0.82
     loc = np.where(res >= threshold)
 
+    # fout = open('text.txt', 'w')
+    # fout.write(str(loc))
+    # fout.close()
     for pt in zip(*loc[::-1]):
         cv.rectangle(output, pt, (pt[0] + w, pt[1] + h), (0,0,0), 1)
 
