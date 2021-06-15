@@ -1,10 +1,12 @@
 import numpy as np
 
-tester = [1,1,1,1,1,3,4,5,5,6,7,7,7,7,7,8,9,9,9,9,0,0,]
-final = []
+tester = [18,53,64,76,32,45,12,1,87]
+indexes = [1,0,7,6]
+num = []
 
-tester = np.uint64(tester)
+for pt in tester:
+    if tester.index(pt) in indexes:
+        num.append(pt)
 
-final = set(tester)
-
-print(final)
+print(num)
+print(indexes[::-1])
