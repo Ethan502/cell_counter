@@ -26,6 +26,7 @@ def matcher(img_data, template):
         y,x = pt
         exes.append(x)
 
+    #make the indexes list of non-duplicate x-values
     indexes = []
     doubles = []
     for i in exes:
@@ -39,33 +40,26 @@ def matcher(img_data, template):
         y,x = point
         whys.append(y)
 
-    new_x = []
-    for xpart in exes:
-        if exes.index(xpart) in indexes:
-            new_x.append(xpart)
+    #seperate find the correct x and y values at their indexes
+    new_xs =[]
+    for partx in indexes:
+       temp =  exes[partx]
+       new_xs.append(temp)
+
+    new_ys =[]
+    for party in indexes:
+       temp2 =  whys[party]
+       new_xs.append(temp2)
 
 
-    new_y = []
-    for ypart in whys:
-        if whys.index(ypart) in indexes:
-            new_y.append(ypart)
-
-    doc2 = open('indexes.txt','w')
-    doc = open('exes.txt','w')
-    doc3 = open('newexes.txt','w')
-    doc4 = open('newys.txt', 'w')
-
-    doc.write(str(exes))
-    doc2.write(str(indexes))
-    doc3.write(str(new_x))
-    doc4.write(str(new_y))
-
-    print(len(exes))
-    print(len(new_x))
-    print(len(whys))
-    print(len(new_y))
     print(len(indexes))
+    print(len(new_xs))
 
+
+
+
+
+    
 
 
 
