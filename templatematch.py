@@ -49,11 +49,13 @@ def matcher(img_data, template):
     new_ys =[]
     for party in indexes:
        temp2 =  whys[party]
-       new_xs.append(temp2)
+       new_ys.append(temp2)
 
 
     print(len(indexes))
     print(len(new_xs))
+
+    print(len(new_ys))
 
 
 
