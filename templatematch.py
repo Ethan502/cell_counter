@@ -12,6 +12,8 @@ def matcher(img_data, template):
 
     w,h = template.shape[::-1]
 
+
+    #blur the image
     k = (20,20)
     blurred_gray = cv.blur(gray,k)
     blurred_temp = cv.blur(template,k)
@@ -51,11 +53,22 @@ def matcher(img_data, template):
        temp2 =  whys[party]
        new_ys.append(temp2)
 
+    #stitch the points together into the array
+    newpts = []
+    for spot in range(0,len(indexes)):
+        x = new_xs[spot]
+        y = new_ys[spot]
+        newpt = x, y
+        newpts.append(newpt)
 
-    print(len(indexes))
-    print(len(new_xs))
+    for part in newpts:
+        #cv.rectangle(output, part, (part[1] + w, part[0] + h), (0,0,0),1)
+        cv.circle(output,part,4,(0,0,255),2)
 
-    print(len(new_ys))
+
+    
+
+
 
 
 
