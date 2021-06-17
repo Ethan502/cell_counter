@@ -1,12 +1,13 @@
 import numpy as np
+import cv2 as cv
 
-tester = [18,53,64,76,32,45,12,1,87]
-indexes = [1,0,7,6]
-num = []
+from templatematch import matcher
 
-for pt in tester:
-    if tester.index(pt) in indexes:
-        num.append(pt)
+img = cv.imread('static/images/cellz.jpg')
+template = cv.imread('static/images/onecell.jpg',0)
 
-print(num)
-print(indexes[::-1])
+points = matcher(img, template)
+
+starter = points[0][0]
+
+print(starter)

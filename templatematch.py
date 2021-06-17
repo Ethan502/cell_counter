@@ -19,14 +19,15 @@ def matcher(img_data, template):
     blurred_temp = cv.blur(template,k)
 
     res = cv.matchTemplate(blurred_gray, blurred_temp, cv.TM_CCOEFF_NORMED)
-    threshold = 0.82
+    threshold = 0.8
     loc = list(np.where(res >= threshold))
     
-    
+    whys = []
     exes = []
     for pt in zip(*loc[::-1]):
-        y,x = pt
+        x,y = pt
         exes.append(x)
+        whys.append(y)
 
     #make the indexes list of non-duplicate x-values
     indexes = []
@@ -34,13 +35,10 @@ def matcher(img_data, template):
     for i in exes:
         if i not in doubles:
             doubles.append(i)
-            temp =  exes.index(i)
+            temp = exes.index(i)
             indexes.append(temp)
 
-    whys = []
-    for point in zip(*loc[::-1]):
-        y,x = point
-        whys.append(y)
+    
 
     #seperate find the correct x and y values at their indexes
     new_xs =[]
@@ -61,29 +59,24 @@ def matcher(img_data, template):
         newpt = x, y
         newpts.append(newpt)
 
-    for part in newpts:
-        #cv.rectangle(output, part, (part[1] + w, part[0] + h), (0,0,0),1)
+    counter = 0
+    for part in newpts[::-1]:
+        cv.rectangle(output, part, (part[0] + w, part[1] + h), (0,0,0),1)
         cv.circle(output,part,4,(0,0,255),2)
+        counter = counter + 1
 
-
+    print(counter)
+    # doc1 = open('old.txt', 'w')
+    # doc2 = open('new.txt', 'w')
     
-
-
-
-
-
-
-
-    
-
-
-
-    
-
+    # doc1.write(str(newpts))
+    # doc2.write(str(new_xs))
     
     # cv.rectangle(output, pt, (pt[0] + w, pt[1] + h), (0,0,0), 1)
 
-    #output = cv.resize(output, (0,0), fx = 0.75, fy= 0.75)
+    output = cv.resize(output, (0,0), fx = 0.75, fy= 0.75)
     cv.imshow('window', output)
     cv.waitKey(0)
     cv.destroyAllWindows()
+
+    return newpts
