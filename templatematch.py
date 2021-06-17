@@ -25,6 +25,7 @@ def matcher(img_data, template):
     # fout.close()
     for pt in zip(*loc[::-1]):
         cv.rectangle(output, pt, (pt[0] + w, pt[1] + h), (0,0,0), 1)
+        #cv.circle(output, (pt[1],pt[0]), 5, (255,0,0), 1)
 
     #output = cv.resize(output, (0,0), fx = 0.75, fy= 0.75)
     cv.imshow('window', output)
