@@ -23,6 +23,7 @@ def matcher(img_data, template):
     whys = []
     exes = []
     for pt in zip(*loc[::-1]):
+<<<<<<< HEAD
         x,y = pt
         exes.append(x)
         whys.append(y)
@@ -75,5 +76,9 @@ def matcher(img_data, template):
     # cv.imshow('window', output)
     # cv.waitKey(0)
     # cv.destroyAllWindows()
+=======
+        cv.rectangle(output, pt, (pt[0] + w, pt[1] + h), (0,0,0), 1)
+        #cv.circle(output, (pt[1],pt[0]), 5, (255,0,0), 1)
+>>>>>>> c5496d73cfc074e54c412ba048dd0f9063f59118
 
     return newpts
