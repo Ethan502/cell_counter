@@ -16,6 +16,8 @@ c = 0
 thresh = 30
 
 finalsA = []
+
+#filter function
 while True: 
 
     if b == len(points):
@@ -48,6 +50,7 @@ for part in finalsA[::-1]:
     cv.circle(img,part,4,(0,0,255),2)
     counter = counter + 1
 
+print(counter)
 img = cv.resize(img, (0,0), fx = 0.5, fy= 0.5)
 cv.imshow('cells', img)
 cv.waitKey(0)
