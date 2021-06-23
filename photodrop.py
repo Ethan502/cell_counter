@@ -3,11 +3,13 @@ import numpy as np
 
 from counters import circlecounter, cornercounter
 from templatematch import matcher
+from filter import filter
+from threshold import thresholder
 
-img = cv.imread('static/images/cellz.jpg')
+
+img = cv.imread('static/images/cellz.jpg',0)
 template = cv.imread('static/images/onecell.jpg',0)
 
-#print("og template type")
-#print(type(template))
+thresholder(img)
 
-matcher(img, template)
+
