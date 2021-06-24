@@ -3,6 +3,8 @@ import numpy as np
 
 def thresholder(img):
 
+    print(len(img.shape))
+
     gray = img.copy()
 
     gray =  cv.cvtColor(gray, cv.COLOR_BGR2GRAY)
@@ -18,15 +20,14 @@ def thresholder(img):
 
     print(len(pic.shape))
 
-    contours, hierarchy = cv.findContours(pic, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
-    lines = cv.drawContours(pic, contours, -1, (0,0,255),2)
+    contours, hierarchy = cv.findContours(gray, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+    cv.drawContours(pic, contours, -1, (0,0,255),2)
     
-
+    
 
     
     
     cv.imshow('original', img)
-    cv.imshow('contours', lines)
     cv.imshow('gaus', pic)
 
     cv.waitKey(0)
