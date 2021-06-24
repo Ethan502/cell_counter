@@ -7,7 +7,7 @@ from filter import filter
 from threshold import thresholder
 
 
-img = cv.imread('static/images/cellz.jpg',0)
+img = cv.imread('static/images/cellz.jpg')
 template = cv.imread('static/images/onecell.jpg',0)
 
 thresholder(img)
